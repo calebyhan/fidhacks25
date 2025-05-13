@@ -10,7 +10,11 @@ export default function Home() {
             <div className="Home slogan">slogan here</div>
             <div className="elements">
                 <div className="submit-container">
-                <div className="submit">Login!</div>
+                <div className="submit">
+                    <Link to="/login">
+                        Login!
+                    </Link>
+                </div>
             <   div className="submit">
                     <Link to="/signup">
                         Sign Up!

@@ -7,19 +7,14 @@ import password_icon from './assets/password.png'
 
 
 
-export default function Signup () {
+export default function Login () {
   const emailRef = useRef()
   const passwordRef = useRef()
-  const passwordConfirmRef = useRef()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
   async function handleSubmit(e){
     e.preventDefault()
-
-    if (passwordRef.current.value !== passwordConfirmRef.current.value){
-        return setError("Passwords do not match")
-    }
 
     try {
         setError("")
@@ -33,7 +28,7 @@ export default function Signup () {
   return (
     <div className="container">
         <div className="header">
-            <div className="text">Sign up!</div>
+            <div className="text">Login!</div>
             <div className="underline"></div>
         </div>
         <form onSubmit={handleSubmit}>
@@ -48,13 +43,10 @@ export default function Signup () {
             <input type="password" ref={passwordRef} placeholder="Password" name="" id="password" />
         </div>
 
-        <div className="input">
-            <img src={password_icon} alt="" />
-            <input type="password" ref={passwordConfirmRef} placeholder="Confirm Password" name="" id="password-confirm" />
-        </div>
+    
         
         <div className="submit-container">
-            <button disabled={loading} className= "submit">Sign Up!</button>
+            <button disabled={loading} className= "submit">Login!</button>
         </div>
 
         </div>
