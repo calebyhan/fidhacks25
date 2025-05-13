@@ -10,10 +10,10 @@ export default function PostInterface() {
 
   const handlePostSubmit = () => {
     if (user && postContent) {
-      const postId = Math.floor(Math.random() * 10000); // Generate random post ID
-      createPost(user.id, postId, postContent); // 👈 use user.id from cookie
+      const postId = Math.floor(Math.random() * 10000);
+      createPost(user.id, postId, postContent);
       alert("Post created successfully!");
-      setPostContent(""); // Clear input field
+      setPostContent("");
     } else {
       alert("Please log in and fill in post content.");
     }

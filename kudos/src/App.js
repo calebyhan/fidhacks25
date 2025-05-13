@@ -1,6 +1,5 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { useCookies } from 'react-cookie'
 
 import Signup from "./components/Signup";
 import Home from "./components/Home";
@@ -9,12 +8,6 @@ import PostInterface from "./components/PostInterface";
 
 
 function App() {
-  const [cookies, setCookie] = useCookies(['user'])
-
-  function handleLogin(user) {
-    setCookie('user', user, { path: '/' })
-  }
-
   return (
     <Router>
       <Routes>

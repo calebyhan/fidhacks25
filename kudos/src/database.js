@@ -56,8 +56,6 @@ async function login(email, password) {
       snapshot.forEach((childSnapshot) => {
         const user = childSnapshot.val();
         const userId = childSnapshot.key;
-        console.log(email, password);
-        console.log(user.email, user.password);
         if (user.email === email && user.password === password) {
           console.log("Login successful");
           foundUser = { id: userId, ...user };
