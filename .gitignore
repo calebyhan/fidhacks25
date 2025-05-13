@@ -17,6 +17,7 @@ kudos/node_modules
 
 # production
 /build
+/kudos/.next/
 
 # misc
 .DS_Store
