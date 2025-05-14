@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 export default function Home() {
-    const [cookies, , removeCookie] = useCookies(['user']);
+    const [cookies, removeCookie] = useCookies(['user']);
     const navigate = useNavigate();
 
     const handleLogout = () => {

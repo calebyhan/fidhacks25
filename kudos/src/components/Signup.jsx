@@ -15,7 +15,7 @@ export default function Signup() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const [setCookie] = useCookies(['user']);
+    const [cookies, setCookie] = useCookies(['user']);
     const navigate = useNavigate();
     
     const [error, setError] = useState("");
@@ -47,8 +47,6 @@ export default function Signup() {
                 email: email,
             };
             setCookie('user', newUser, { path: '/' });
-
-            alert('Signup successful!');
 
             navigate('/');
         } catch (err) {

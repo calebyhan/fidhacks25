@@ -18,24 +18,22 @@ export default function Login() {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
-        setError("");
-        setLoading(true);
+            setError("");
+            setLoading(true);
 
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+            const email = emailRef.current.value;
+            const password = passwordRef.current.value;
 
-        const user = await login(email, password);
+            const user = await login(email, password);
 
-        if (user) {
-            setCookie('user', user, { path: '/' });
-            alert('Login successful!');
-            navigate('/');
-        } else {
-            setError('Invalid email or password');
-        }
-
+            if (user) {
+                setCookie('user', user, { path: '/' });
+                navigate('/');
+            } else {
+                setError('Invalid email or password');
+            }
         } catch (err) {
-        setError(`Failed to login: ${err.message}`);
+            setError(`Failed to login: ${err.message}`);
         }
         setLoading(false);
     }
