@@ -22,7 +22,7 @@
 
 
 .text{
-    color: black;
+    color: #223B44;;
     font-size: 48px;
     font-weight: 500;
 }
@@ -30,7 +30,7 @@
 .underline {
     width: 61px;
     height: 6px;
-    background: #75a45a;
+    background: #223B44;
     border-radius: 9px;
 }
 
@@ -48,7 +48,7 @@
     margin: auto;
     width: 480px;
     height: 80px;
-    background: #FAD9DB;
+    background: #e3f2ff;
     border-radius: 6px;
 }
 

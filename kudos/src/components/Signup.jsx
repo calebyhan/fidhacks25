@@ -8,7 +8,10 @@ import user_icon from './assets/person.png';
 import email_icon from './assets/email.png';
 import password_icon from './assets/password.png';
 
+
 export default function Signup() {
+    const nameRef = useRef();
+    const userRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
@@ -61,6 +64,14 @@ export default function Signup() {
         </div>
         <form onSubmit={handleSubmit}>
             <div className="inputs">
+            <div className="input">
+                <img src={user_icon} alt="" />
+                <input type="text" ref={nameRef} placeholder="Full name" id="name" />
+            </div>
+            <div className="input">
+                <img src={user_icon} alt="" />
+                <input type="text" ref={userRef} placeholder="Username" id="username" />
+            </div>
             <div className="input">
                 <img src={email_icon} alt="" />
                 <input type="email" ref={emailRef} placeholder="Email address" id="email" />
