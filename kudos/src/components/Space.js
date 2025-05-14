@@ -2,26 +2,39 @@ import React, { useState, useEffect } from "react";
 import "./Space.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import { getPostsForSpace } from "../database";
+import { getPostsForSpace, getSpaceOrder } from "../database";
 
 export default function Space() {
-    const [cookies, removeCookie] = useCookies(['user']);
+    const [cookies] = useCookies(['user']);
     const [posts, setPosts] = useState([]);
+    const [accessAllowed, setAccessAllowed] = useState(false);
     const navigate = useNavigate();
     const { spaceId } = useParams();
 
     useEffect(() => {
-        async function fetchPosts() {
-            if (cookies.user && spaceId) {
+        async function checkAccessAndFetch() {
+            if (!cookies.user) {
+                navigate('/login');
+                return;
+            }
+
+            const userSpaces = await getSpaceOrder(cookies.user.id);
+            const allowedSpaceIds = userSpaces.map(space => String(space.id));
+
+            if (allowedSpaceIds.includes(spaceId)) {
+                setAccessAllowed(true); 
                 const postsList = await getPostsForSpace(spaceId);
                 setPosts(postsList);
+            } else {
+                setAccessAllowed(false);
+                navigate('/');
             }
         }
-        fetchPosts();
-    }, [cookies, spaceId]);
 
-    if (!cookies.user) {
-        navigate('/login');
+        checkAccessAndFetch();
+    }, [cookies, spaceId, navigate]);
+
+    if (!cookies.user || !accessAllowed) {
         return null;
     }
 
