@@ -52,13 +52,17 @@ export default function PostInterface() {
 
 
     return (
-        <div>
+        <div className="container">
             {showPopup && (
                 <div className="popup">
                     {popupMessage}
                 </div>
             )}
-            <h2>Create a Post</h2>
+            <div className="header">
+            <h2 className="text">Create a Post</h2>
+            <div className="underline"></div>
+            </div>
+            <div className="items">
             <div>
                 <label>
                     Post Content:
@@ -91,6 +95,7 @@ export default function PostInterface() {
             </div>
 
             <button onClick={handlePostSubmit}>Submit Post</button>
+            </div>
         </div>
     );
 }
