@@ -49,7 +49,7 @@ export default function ViewSpaces() {
         setUserSpaces(items);
 
         try {
-            await spaceOrder(cookies.user.id, items.map(space => space.id)); 
+            await spaceOrder(cookies.user.id, items.map(space => space.id));
             console.log("Order updated!");
         } catch (error) {
             console.error("Failed to update order:", error);
@@ -69,13 +69,15 @@ export default function ViewSpaces() {
                                 <Draggable key={space.id} draggableId={String(space.id)} index={index}>
                                     {(provided) => (
                                         <div
-                                            className="space-item"
+                                            className={`space-item ${index < 2 ? 'favorite' : ''}`}
                                             ref={provided.innerRef}
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
-                                            onClick={() => handleGoToSpace(space.id)}
+                                            onClick={() => handleGoToSpace(space.id)} // 🔥 MOVE onClick here
                                         >
-                                            {space.name}
+                                            <div className="space-name">
+                                                {space.name}
+                                            </div>
                                         </div>
                                     )}
                                 </Draggable>

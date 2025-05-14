@@ -43,6 +43,10 @@ function createPost(userId, postId, postContent, spaces) {
 async function createSpace(userId, spaceId, spaceName) {
     set(ref(db, "spaces/" + spaceId), {
         name: spaceName,
+        code: Math.floor(Math.random() * 1000000),
+        members: {
+            [userId]: true
+        },
         posts: {}
     });
 
@@ -85,7 +89,8 @@ async function login(email, password) {
     }
 }
 
-async function getPostsForSpace(spaceId) {
+async function getPostsForSpace(spaceId, userId) {
+    const db = getDatabase();
     const dbRef = ref(db);
 
     try {
@@ -103,12 +108,32 @@ async function getPostsForSpace(spaceId) {
             const postSnapshot = await get(child(dbRef, `posts/${postId}`));
             if (postSnapshot.exists()) {
                 const postData = postSnapshot.val();
+
+                let authorName = "Unknown User";
+                try {
+                    const userSnapshot = await get(child(dbRef, `users/${postData.author}`));
+                    if (userSnapshot.exists()) {
+                        const userData = userSnapshot.val();
+                        authorName = userData.username || "Unknown User";
+                    }
+                } catch (err) {
+                    console.error("Error fetching username:", err);
+                }
+
+                const isLiked = postData.kudosByUser && postData.kudosByUser[userId];
+
                 postList.push({
                     id: postId,
-                    ...postData
+                    content: postData.content,
+                    author: authorName,
+                    kudos: postData.kudos || 0,
+                    isLiked: !!isLiked,
+                    timestamp: postData.timestamp || Date.now()
                 });
             }
         }
+
+        postList.sort((a, b) => b.timestamp - a.timestamp);
 
         return postList;
     } catch (error) {
@@ -138,6 +163,11 @@ async function joinSpace(userId, spaceId, code) {
             spaceOrder: [...currentSpaceOrder, spaceId]
         });
     }
+
+    const spaceRef = ref(db, `spaces/${spaceId}/members/${userId}`);
+    await set(spaceRef, true);
+    console.log("User joined space successfully");
+    return true;
 }
 
 async function spaceOrder(userId, orderedSpaceIds) {
@@ -157,6 +187,62 @@ async function getSpaceOrder(userId) {
     }
 }
 
+async function toggleKudos(postId, userId) {
+    const db = getDatabase();
+    const postRef = ref(db, `posts/${postId}`);
+
+    try {
+        const snapshot = await get(postRef);
+        if (snapshot.exists()) {
+            const post = snapshot.val();
+            const kudosByUser = post.kudosByUser || {};
+
+            const alreadyLiked = kudosByUser[userId] === true;
+            const updatedKudos = alreadyLiked ? post.kudos - 1 : post.kudos + 1;
+
+            if (alreadyLiked) {
+                delete kudosByUser[userId];
+            } else {
+                kudosByUser[userId] = true;
+            }
+
+            await update(postRef, {
+                kudos: updatedKudos,
+                kudosByUser: kudosByUser
+            });
+
+            return { updatedKudos, isLiked: !alreadyLiked };
+        } else {
+            throw new Error("Post not found");
+        }
+    } catch (error) {
+        console.error("Error toggling kudos:", error);
+        throw error;
+    }
+}
+
+async function getSpaceInfo(spaceId) {
+    const db = getDatabase();
+    const dbRef = ref(db);
+
+    try {
+        const snapshot = await get(child(dbRef, `spaces/${spaceId}`));
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            return {
+                name: data.name || "Unnamed Space",
+                code: data.code || "No Code",
+                members: data.members || {} // assuming you track members
+            };
+        } else {
+            return null;
+        }
+    } catch (error) {
+        console.error("Failed to fetch space info:", error);
+        return null;
+    }
+}
+
 export { 
     db, 
     createUser, 
@@ -166,5 +252,7 @@ export {
     getPostsForSpace, 
     joinSpace, 
     spaceOrder,
-    getSpaceOrder 
+    getSpaceOrder,
+    toggleKudos,
+    getSpaceInfo,
 };

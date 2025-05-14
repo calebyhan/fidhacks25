@@ -11,7 +11,7 @@ function Navbar(){
             <ul>
                 <CustomLink to="/">Home</CustomLink>
                 <CustomLink to="/profile">Profile</CustomLink>
-                <CustomLink to="/spaces">Spaces</CustomLink>
+                <CustomLink to="/view-spaces">Spaces</CustomLink>
                 <CustomLink to="/post">Post</CustomLink>
                 <CustomLink to="/resources">Resources</CustomLink>
             </ul>

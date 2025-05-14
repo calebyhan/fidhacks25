@@ -2,12 +2,15 @@ export function getCurrentTimestamp() {
     return Math.floor(Date.now() / 1000);
 }
 
-export function getFormattedTime() {
-    const now = new Date();
-    return now.getFullYear() + "-" +
-        String(now.getMonth() + 1).padStart(2, "0") + "-" +
-        String(now.getDate()).padStart(2, "0") + " " +
-        String(now.getHours()).padStart(2, "0") + ":" +
-        String(now.getMinutes()).padStart(2, "0") + ":" +
-        String(now.getSeconds()).padStart(2, "0");
+export function getFormattedTime(timestamp) {
+    const date = new Date(timestamp * 1000);
+    return date.toLocaleString("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+    });
 }
