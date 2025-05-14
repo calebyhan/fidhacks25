@@ -35,7 +35,7 @@ export default function CreateSpacePage() {
 
     return (
         <div className="CreateSpacePage">
-            <h2>Create a New Space</h2>
+            <h2>Create a New Cloud</h2>
 
             <div className="form-group">
                 <label>Cloud Name:</label>
@@ -50,7 +50,7 @@ export default function CreateSpacePage() {
             {error && <div className="error">{error}</div>}
 
             <button onClick={handleCreate} className="create-button">
-                Create Space
+                Create Cloud
             </button>
         </div>
     );
