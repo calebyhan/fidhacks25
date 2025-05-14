@@ -29,7 +29,8 @@ The intention is that these posts are points in the journey towards a long-term 
 Whether you are thinking about applying for a new job, thinking about trying a new hobby, or just trying to believe in yourself again—Kudos is designed to help you **bet on yourself**.
 
 ## How we built it
-We began sorting out all our ideas on a whiteboard. Once we had a clear vision, we broke it down by making a design in Figma, then building the framework for the website, focusing on group interactions and a simple demo that gets our idea across. The 
+We began sorting out all our ideas on a whiteboard. Once we had a clear vision, we broke it down by making a design in Figma, then building the framework for the website, focusing on group interactions and a simple demo that gets our idea across. The front end was built using React, and we used Firebase Realtime Database for our database.
+
 ## Challenges we ran into
 We all had different skill levels and had big ideas that had to be refined due to the time restraint. We had to prioritize what we needed and leave the rest for the future. 
 
@@ -41,4 +42,4 @@ Deployed our prototype and developed a refined idea on how to improve women's ex
 Learning the importance of prioritizing tasks.
 
 ## What's next for Kudos
-Our plans for Kudos are to expand our user base, implement an improved and seamless UI, and add more tools within the website. These tools include more profile customization, more reactions towards posts, and monitored replies to the posts.
+Our plans for Kudos are to expand our user base, implement an improved and seamless UI, and add more tools within the website. These tools include more profile customization, more reactions towards posts, and monitored replies to the posts. We also wish to integrate Firebase Storage to implement profile pictures and general user media uploads.
