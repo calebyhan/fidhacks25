@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import Home from "./components/Home";
 import Login from "./components/Login"
 import PostInterface from "./components/PostInterface";
+import Space from "./components/Space";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/post" element={<PostInterface />} />
+            <Route path="/space/:spaceId" element={<Space />} />
 
             </Routes>
         </Router>

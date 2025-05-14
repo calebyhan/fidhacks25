@@ -121,4 +121,37 @@ async function spaces(userId) {
     }
 }
 
-export { db, createUser, createPost, createSpace, login, spaces };
+async function getPostsForSpace(spaceId) {
+    const db = getDatabase();
+    const dbRef = ref(db);
+
+    try {
+        const spaceSnapshot = await get(child(dbRef, `spaces/${spaceId}/posts`));
+        if (!spaceSnapshot.exists()) {
+            return [];
+        }
+
+        const postIdsObj = spaceSnapshot.val();
+        const postIds = Object.values(postIdsObj);
+
+        const postList = [];
+
+        for (const postId of postIds) {
+            const postSnapshot = await get(child(dbRef, `posts/${postId}`));
+            if (postSnapshot.exists()) {
+                const postData = postSnapshot.val();
+                postList.push({
+                    id: postId,
+                    ...postData
+                });
+            }
+        }
+
+        return postList;
+    } catch (error) {
+        console.error("Error fetching posts for space:", error);
+        return [];
+    }
+}
+
+export { db, createUser, createPost, createSpace, login, spaces, getPostsForSpace };
