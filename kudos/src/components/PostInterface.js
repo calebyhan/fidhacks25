@@ -59,8 +59,8 @@ export default function PostInterface() {
                 </div>
             )}
             <div className="header">
-            <h2 className="text">Create a Post</h2>
-            <div className="underline"></div>
+            <h2>Create a Post</h2>
+            <div className="underline-post"></div>
             </div>
             <div className="items">
             <div>
