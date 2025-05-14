@@ -12,6 +12,13 @@
   box-sizing: border-box;
 }
 
+.cloud {
+  width: 500px;
+  height: 500px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+}
+
 .submit-container {
   display:flex; 
   justify-content: center;

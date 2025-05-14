@@ -16,10 +16,11 @@ const app = initializeApp(firebaseConfig);
 
 const db = getDatabase(app);
 
-function createUser(userId, name, email, password) {
+function createUser(userId, username, name, email, password) {
     const db = getDatabase(app);
     set(ref(db, "users/" + userId), {
-        username: name,
+        username: username,
+        name: name,
         email: email,
         password: password,
         posts: {},

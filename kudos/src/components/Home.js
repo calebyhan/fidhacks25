@@ -17,27 +17,34 @@ export default function Home() {
     return (
         <div className="Home">
             {!isLoggedIn ? (
-            <>
-                <div className="logo">
-                <img src={require('./assets/logo.png')} alt="logo" />
-                </div>
-                <div className="elements">
-                <div className="submit-container">
-                    <div className="submit">
-                    <Link to="/login">LOGIN</Link>
+                <>
+                    <div className="logo">
+                        <img src={require('./assets/logo.png')} alt="logo" />
                     </div>
-                    <div className="submit">
-                    <Link to="/signup">SIGN UP</Link>
+                    <div className="elements">
+                        <div className="submit-container">
+                            <div className="submit">
+                                <Link to="/login">LOGIN</Link>
+                            </div>
+                            <div className="submit">
+                                <Link to="/signup">SIGN UP</Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                </div>
-            </>
+                    <div className="cloud">
+                        <img src={require('./assets/cloud1.png')} alt="cloud1" />
+                        <img src={require('./assets/cloud2.png')} alt="cloud2" />
+                    </div>
+                </>
             ) : (
-            <>
-                <div className="welcome">
-                <h2>Welcome back!</h2>
-                </div>
-            </>
+                <>
+                    <div className="welcome">
+                    <h2>Welcome back!</h2>
+                    <div className="submit">
+                            <Link to="/" onClick={ handleLogout }>Log Out</Link>
+                        </div>
+                    </div>
+                </>
             )}
         </div>
     );
