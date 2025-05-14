@@ -97,7 +97,7 @@ export default function Home() {
                     <div className="cloud" onClick={handleCreateSpace}>
                         <img src={require('./assets/cloud.png')} alt="cloud" className="cloud-image" />
                         <div className="cloud-content">
-                            <div className="cloud-name">+ Create Space</div>
+                            <div className="cloud-name">+ Create Cloud</div>
                         </div>
                     </div>
                 )}
@@ -113,16 +113,16 @@ export default function Home() {
                     <div className="cloud" onClick={handleCreateSpace}>
                         <img src={require('./assets/cloud.png')} alt="cloud" className="cloud-image" />
                         <div className="cloud-content">
-                            <div className="cloud-name">+ Create Space</div>
+                            <div className="cloud-name">+ Create Cloud</div>
                         </div>
                     </div>
                 )}
             </div>
 
             <div className="buttons-container">
-                <button onClick={handleJoinSpace} className="home-button">JOIN A SPACE</button>
-                <button onClick={handleViewAllSpaces} className="home-button">VIEW ALL SPACES</button>
-                <button onClick={handleCreateSpace} className="home-button">CREATE A SPACE</button>
+                <button onClick={handleJoinSpace} className="home-button">JOIN A CLOUD</button>
+                <button onClick={handleViewAllSpaces} className="home-button">VIEW ALL CLOUDS</button>
+                <button onClick={handleCreateSpace} className="home-button">CREATE A CLOUD</button>
             </div>
 
             <div className="logout-button">

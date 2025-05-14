@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { joinSpace } from "../database";
-import "./JoinSpace.css"; // optional for styling
+import "./JoinSpace.css";
 
 export default function JoinSpace() {
     const [cookies] = useCookies(['user']);
@@ -41,7 +41,7 @@ export default function JoinSpace() {
                     type="text"
                     value={spaceCode}
                     onChange={(e) => setSpaceCode(e.target.value)}
-                    placeholder="Space ID or code"
+                    placeholder="Cloud ID or code"
                 />
             </div>
 

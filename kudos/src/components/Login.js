@@ -39,29 +39,31 @@ export default function Login() {
     }
 
     return (
-        <div className="container">
-        <div className="header">
-            <div className="text">Login!</div>
-            <div className="underline"></div>
-        </div>
-        <form onSubmit={handleSubmit}>
-            <div className="inputs">
-            <div className="input">
-                <img src={email_icon} alt="" />
-                <input type="email" ref={emailRef} placeholder="Email address" id="email" />
+        <div className="login">
+            <div className="header">
+                    <div className="text">Login!</div>
+                    <div className="underline"></div>
+                </div>
+            <div className="container1">
+                <form onSubmit={handleSubmit}>
+                    <div className="inputs">
+                    <div className="input">
+                        <img src={email_icon} alt="" />
+                        <input type="email" ref={emailRef} placeholder="Email address" id="email" />
+                    </div>
+                    <div className="input">
+                        <img src={password_icon} alt="" />
+                        <input type="password" ref={passwordRef} placeholder="Password" id="password" />
+                    </div>
+                    <div className="submit-container">
+                        <button type="submit" className="submit" disabled={loading}>
+                        {loading ? "Logging in..." : "Login!"}
+                        </button>
+                    </div>
+                    {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
+                    </div>
+                </form>
             </div>
-            <div className="input">
-                <img src={password_icon} alt="" />
-                <input type="password" ref={passwordRef} placeholder="Password" id="password" />
-            </div>
-            <div className="submit-container">
-                <button type="submit" className="submit" disabled={loading}>
-                {loading ? "Logging in..." : "Login!"}
-                </button>
-            </div>
-            {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
-            </div>
-        </form>
         </div>
     );
 };
