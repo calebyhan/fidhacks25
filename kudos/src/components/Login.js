@@ -10,7 +10,7 @@ import password_icon from './assets/password.png';
 export default function Login() {
     const emailRef = useRef();
     const passwordRef = useRef();
-    const [setCookie] = useCookies(['user']);
+    const [cookies, setCookie] = useCookies(['user']);
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 export default function Home() {
-    const [cookies, removeCookie] = useCookies(['user']);
+    const [cookies, , removeCookie] = useCookies(['user']);
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -12,11 +12,9 @@ export default function Home() {
         navigate("/");
     };
 
-    const isLoggedIn = !!cookies.user;
-
     return (
         <div className="Home">
-            {!isLoggedIn ? (
+            {!cookies.user ? (
                 <>
                     <div className="logo">
                         <img src={require('./assets/logo.png')} alt="logo" />
@@ -35,9 +33,9 @@ export default function Home() {
             ) : (
                 <>
                     <div className="welcome">
-                    <h2>Welcome back!</h2>
-                    <div className="submit">
-                            <Link to="/" onClick={ handleLogout }>Log Out</Link>
+                        <h2>Welcome back!</h2>
+                        <div className="submit">
+                            <button onClick={handleLogout} className="submit">Log Out</button>
                         </div>
                     </div>
                 </>
