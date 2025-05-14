@@ -64,7 +64,7 @@ export default function PostInterface() {
             setPostContent("");
             setSelectedSpaces([]);
         } else {
-            setPopupMessage("Please enter post content and select at least one space.");
+            setPopupMessage("Please enter post content and select at least one cloud.");
             setShowPopup(true);
             setTimeout(() => setShowPopup(false), 2000);
         }
@@ -74,7 +74,7 @@ export default function PostInterface() {
         <div className="postcontainer">
                 {showPopup && <div className="popup">{popupMessage}</div>}
                 <div className="header">
-                    <h2 className="text">Create a Post</h2>
+                    <h2 className="textpost">Create a Post</h2>
                     <div className="underline"></div>
                 </div>
             <div className="items">
@@ -91,7 +91,7 @@ export default function PostInterface() {
                 </div>
 
                 <div>
-                    <h3>Select Spaces to Post:</h3>
+                    <h3>Select Clouds to Post:</h3>
                     {availableSpaces.length > 0 ? (
                         availableSpaces.map((space) => (
                             <div key={space.id}>

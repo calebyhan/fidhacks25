@@ -56,41 +56,43 @@ export default function Signup() {
     }
 
     return (
-        <div className="container">
-        <div className="header">
-            <div className="text">Sign up!</div>
-            <div className="underline"></div>
-        </div>
-        <form onSubmit={handleSubmit}>
-            <div className="inputs">
-            <div className="input">
-                <img src={user_icon} alt="" />
-                <input type="text" ref={nameRef} placeholder="Full name" id="name" />
+        <div className="login">
+            <div className="header">
+                <div className="text">Sign up!</div>
+                <div className="underline"></div>
             </div>
-            <div className="input">
-                <img src={user_icon} alt="" />
-                <input type="text" ref={userRef} placeholder="Username" id="username" />
+            <div className="container1">
+                <form onSubmit={handleSubmit}>
+                    <div className="inputs">
+                    <div className="input">
+                        <img src={user_icon} alt="" />
+                        <input type="text" ref={nameRef} placeholder="Full name" id="name" />
+                    </div>
+                    <div className="input">
+                        <img src={user_icon} alt="" />
+                        <input type="text" ref={userRef} placeholder="Username" id="username" />
+                    </div>
+                    <div className="input">
+                        <img src={email_icon} alt="" />
+                        <input type="email" ref={emailRef} placeholder="Email address" id="email" />
+                    </div>
+                    <div className="input">
+                        <img src={password_icon} alt="" />
+                        <input type="password" ref={passwordRef} placeholder="Password" id="password" />
+                    </div>
+                    <div className="input">
+                        <img src={password_icon} alt="" />
+                        <input type="password" ref={passwordConfirmRef} placeholder="Confirm Password" id="password-confirm" />
+                    </div>
+                    <div className="submit-container">
+                        <button type="submit" className="submit" disabled={loading}>
+                        {loading ? "Signing up..." : "Sign Up!"}
+                        </button>
+                    </div>
+                    {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
+                    </div>
+                </form>
             </div>
-            <div className="input">
-                <img src={email_icon} alt="" />
-                <input type="email" ref={emailRef} placeholder="Email address" id="email" />
-            </div>
-            <div className="input">
-                <img src={password_icon} alt="" />
-                <input type="password" ref={passwordRef} placeholder="Password" id="password" />
-            </div>
-            <div className="input">
-                <img src={password_icon} alt="" />
-                <input type="password" ref={passwordConfirmRef} placeholder="Confirm Password" id="password-confirm" />
-            </div>
-            <div className="submit-container">
-                <button type="submit" className="submit" disabled={loading}>
-                {loading ? "Signing up..." : "Sign Up!"}
-                </button>
-            </div>
-            {error && <div style={{ color: "red", marginTop: "10px" }}>{error}</div>}
-            </div>
-        </form>
         </div>
     );
 }

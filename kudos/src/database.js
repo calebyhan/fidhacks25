@@ -116,7 +116,7 @@ async function getPostsForSpace(spaceId, userId) {
                     const userSnapshot = await get(child(dbRef, `users/${postData.author}`));
                     if (userSnapshot.exists()) {
                         const userData = userSnapshot.val();
-                        authorName = userData.username || "Unknown User";
+                        authorName = userData.name || "Unknown User";
                     }
                 } catch (err) {
                     console.error("Error fetching username:", err);
