@@ -7,6 +7,7 @@ import Login from "./components/Login"
 import PostInterface from "./components/PostInterface";
 import Space from "./components/Space";
 import Profile from "./components/Profile"
+import Resources from "./components/Resources"
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
             <Route path="/post" element={<PostInterface />} />
             <Route path="/space/:spaceId" element={<Space />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/resources" element={<Resources />} />
 
             </Routes>
         </Router>
