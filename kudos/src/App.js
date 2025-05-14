@@ -9,7 +9,6 @@ import Space from "./components/Space";
 import CreateSpace from "./components/CreateSpace";
 import JoinSpace from './components/JoinSpace';
 import ViewSpaces from './components/ViewSpaces';
-
 import Profile from "./components/Profile"
 
 function App() {

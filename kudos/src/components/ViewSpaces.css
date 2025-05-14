@@ -1,0 +1,41 @@
+.ViewSpacesPage {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #4A90E2, #50C9C3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 50px;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+p {
+  color: white;
+  margin-bottom: 20px;
+}
+
+.space-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+
+.space-item {
+  background: white;
+  padding: 15px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.space-item:hover {
+  background-color: #f0f0f0;
+}
