@@ -1,5 +1,5 @@
 .Space {
-  background: linear-gradient(to bottom, #4A90E2, #50C9C3); /* same nice blue gradient */
+  background: linear-gradient(to bottom, #4A90E2, #50C9C3);
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -34,7 +34,7 @@
   max-width: 600px;
   margin-top: 20px;
   overflow-y: auto;
-  height: 70vh; /* scrollable */
+  height: 70vh;
   padding-right: 10px;
 }
 
@@ -55,7 +55,7 @@
   border-radius: 50%;
   margin-right: 15px;
   object-fit: cover;
-  background-color: #d9d9d9; /* fallback grey background */
+  background-color: #d9d9d9;
 }
 
 .post-content {

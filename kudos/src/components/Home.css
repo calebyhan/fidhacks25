@@ -12,6 +12,8 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
 }
 
 .Home2 {
@@ -20,14 +22,16 @@
   background-position: center;
   background-repeat: no-repeat;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  position: relative;
 }
 
 .submit-container {

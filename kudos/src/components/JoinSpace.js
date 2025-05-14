@@ -23,8 +23,8 @@ export default function JoinSpace() {
         }
 
         try {
-            await joinSpace(user.id, spaceCode, spaceCode); // assuming spaceId = code
-            navigate("/"); // back to home after success
+            await joinSpace(user.id, spaceCode);
+            navigate("/");
         } catch (err) {
             console.error("Failed to join space:", err);
             setError("Failed to join space. Check the code.");

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get, child, update } from "firebase/database";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage";
 import { getCurrentTimestamp } from "./timehelper";
 
 const firebaseConfig = {
@@ -13,6 +14,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
 const db = getDatabase(app);
 
 function createUser(userId, username, name, email, password) {
@@ -142,32 +144,46 @@ async function getPostsForSpace(spaceId, userId) {
     }
 }
 
-async function joinSpace(userId, spaceId, code) {
-    const spaceSnapshot = await get(ref(db, `spaces/${spaceId}`));
-    if (!spaceSnapshot.exists()) {
-        console.log("Space does not exist");
-        return false;
+async function joinSpace(userId, code) {
+    const dbRef = ref(db);
+    const spacesSnapshot = await get(child(dbRef, "spaces"));
+
+    if (!spacesSnapshot.exists()) {
+        throw new Error("No spaces found");
     }
 
-    const spaceData = spaceSnapshot.val();
-    if (spaceData.code !== code) {
-        console.log("Invalid code");
-        return false;
+    let foundSpace = null;
+
+    spacesSnapshot.forEach((childSnapshot) => {
+        const space = childSnapshot.val();
+        const spaceId = parseInt(childSnapshot.key); // force ID to integer
+        if (space.code === Number(code)) {            // compare as integers
+            foundSpace = { id: spaceId, ...space };
+        }
+    });
+
+    if (!foundSpace) {
+        throw new Error("Space not found");
     }
 
+    // Add user to the space's members
+    await update(ref(db, `spaces/${foundSpace.id}/members`), {
+        [userId]: true,
+    });
+
+    // Add space to user's spaceOrder
     const userRef = ref(db, `users/${userId}`);
     const userSnapshot = await get(userRef);
-    if (userSnapshot.exists()) {
-        const currentSpaceOrder = userSnapshot.val().spaceOrder || [];
-        await update(userRef, {
-            spaceOrder: [...currentSpaceOrder, spaceId]
-        });
-    }
 
-    const spaceRef = ref(db, `spaces/${spaceId}/members/${userId}`);
-    await set(spaceRef, true);
-    console.log("User joined space successfully");
-    return true;
+    if (userSnapshot.exists()) {
+        const userData = userSnapshot.val();
+        const currentSpaceOrder = (userData.spaceOrder || []).map(id => Number(id)); // ensure numbers
+        await update(userRef, {
+            spaceOrder: [...currentSpaceOrder, foundSpace.id],
+        });
+    } else {
+        throw new Error("User not found");
+    }
 }
 
 async function spaceOrder(userId, orderedSpaceIds) {
@@ -243,6 +259,21 @@ async function getSpaceInfo(spaceId) {
     }
 }
 
+async function uploadProfilePicture(userId, file) {
+    if (!file) return null;
+
+    const fileRef = storageRef(storage, `profilePictures/${userId}`); // path inside Storage
+    await uploadBytes(fileRef, file);
+    const downloadURL = await getDownloadURL(fileRef);
+
+    return downloadURL; // this is the link to save in Realtime Database
+}
+
+async function updateUserProfile(userId, newData) {
+    const userRef = ref(db, `users/${userId}`);
+    await update(userRef, newData);
+}
+
 export { 
     db, 
     createUser, 
@@ -255,4 +286,6 @@ export {
     getSpaceOrder,
     toggleKudos,
     getSpaceInfo,
+    uploadProfilePicture,
+    updateUserProfile,
 };

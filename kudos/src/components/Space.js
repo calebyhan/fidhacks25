@@ -24,6 +24,7 @@ export default function Space() {
             }
 
             const userSpaceIds = await getSpaceOrder(user.id);
+            console.log("User Space IDs:", userSpaceIds);
 
             if (userSpaceIds.includes(Number(spaceId))) {
                 setAccessAllowed(true);
