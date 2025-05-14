@@ -8,17 +8,17 @@ import PostInterface from "./components/PostInterface";
 
 
 function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/post" element={<PostInterface />} />
+    return (
+        <Router>
+        <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/post" element={<PostInterface />} />
 
-        </Routes>
-      </Router>
-  );
+            </Routes>
+        </Router>
+    );
 }
 
 export default App;

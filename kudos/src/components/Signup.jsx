@@ -25,33 +25,34 @@ export default function Signup() {
         e.preventDefault();
 
         if (passwordRef.current.value !== passwordConfirmRef.current.value) {
-        return setError("Passwords do not match");
+            return setError("Passwords do not match");
         }
 
         try {
-        setError("");
-        setLoading(true);
+            setError("");
+            setLoading(true);
 
-        const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+            const email = emailRef.current.value;
+            const password = passwordRef.current.value;
+            const name = nameRef.current.value;
+            const username = userRef.current.value;
 
-        const userId = Math.floor(Math.random() * 10000);
-        const username = email.split("@")[0];
+            const userId = Math.floor(Math.random() * 10000);
 
-        await createUser(userId, username, email, password);
+            await createUser(userId, username, name, email, password);
 
-        const newUser = {
-            id: userId,
-            username: username,
-            email: email,
-        };
-        setCookie('user', newUser, { path: '/' });
+            const newUser = {
+                id: userId,
+                username: username,
+                email: email,
+            };
+            setCookie('user', newUser, { path: '/' });
 
-        alert('Signup successful!');
+            alert('Signup successful!');
 
-        navigate('/');
+            navigate('/');
         } catch (err) {
-        setError(`Failed to create an account: ${err.message}`);
+            setError(`Failed to create an account: ${err.message}`);
         }
         setLoading(false);
     }

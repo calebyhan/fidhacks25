@@ -47,33 +47,33 @@ function createSpace(userId, spaceId, spaceName) {
 }
 
 async function login(email, password) {
-  const db = getDatabase(app);
-  const dbRef = ref(db);
+    const db = getDatabase(app);
+    const dbRef = ref(db);
 
-  try {
-    const snapshot = await get(child(dbRef, "users"));
-    if (snapshot.exists()) {
-      let foundUser = null;
-      snapshot.forEach((childSnapshot) => {
-        const user = childSnapshot.val();
-        const userId = childSnapshot.key;
-        if (user.email === email && user.password === password) {
-          console.log("Login successful");
-          foundUser = { id: userId, ...user };
+    try {
+        const snapshot = await get(child(dbRef, "users"));
+        if (snapshot.exists()) {
+        let foundUser = null;
+        snapshot.forEach((childSnapshot) => {
+            const user = childSnapshot.val();
+            const userId = childSnapshot.key;
+            if (user.email === email && user.password === password) {
+            console.log("Login successful");
+            foundUser = { id: userId, ...user };
+            }
+        });
+        if (!foundUser) {
+            console.log("Login failed");
         }
-      });
-      if (!foundUser) {
-        console.log("Login failed");
-      }
-      return foundUser;
-    } else {
-      console.log("No users found");
-      return null;
+        return foundUser;
+        } else {
+        console.log("No users found");
+        return null;
+        }
+    } catch (error) {
+        console.error("Login error:", error);
+        return null;
     }
-  } catch (error) {
-    console.error("Login error:", error);
-    return null;
-  }
 }
 
 export { db, createUser, createPost, createSpace, login };
