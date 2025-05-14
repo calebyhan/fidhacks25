@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { uploadProfilePicture, updateUserProfile } from "../database";
 import "./Profile.css";
-import "./popup.css"; // 🔥 use your popup styling
+import "./popup.css";
 
 export default function Profile() {
     const [cookies] = useCookies(['user']);

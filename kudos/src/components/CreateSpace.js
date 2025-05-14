@@ -22,11 +22,11 @@ export default function CreateSpacePage() {
             return;
         }
 
-        const randomSpaceId = Math.floor(Math.random() * 100000); // Random id generation
+        const randomSpaceId = Math.floor(Math.random() * 100000);
 
         try {
             await createSpace(user.id, randomSpaceId, spaceName);
-            navigate("/"); // After creating, go back to Home
+            navigate("/");
         } catch (err) {
             console.error("Failed to create space:", err);
             setError("Failed to create space.");

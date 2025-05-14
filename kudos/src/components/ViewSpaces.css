@@ -34,11 +34,11 @@ p {
   font-weight: bold;
   transition: background-color 0.2s ease, border 0.2s ease;
   user-select: none;
-  border: 2px solid transparent; /* 👈 default no border */
+  border: 2px solid transparent;
 }
 
 .space-name {
-  all: unset; /* removes button default styles */
+  all: unset;
   cursor: pointer;
   font-weight: bold;
   font-size: 18px;
@@ -49,7 +49,6 @@ p {
   background-color: #f0f0f0;
 }
 
-/* New! Highlight top 2 favorited spaces */
 .favorite {
-  border: 4px solid gold; /* ✨ yellow outline */
+  border: 4px solid gold;
 }
