@@ -38,12 +38,12 @@ export default function CreateSpacePage() {
             <h2>Create a New Space</h2>
 
             <div className="form-group">
-                <label>Space Name:</label>
+                <label>Cloud Name:</label>
                 <input
                     type="text"
                     value={spaceName}
                     onChange={(e) => setSpaceName(e.target.value)}
-                    placeholder="Enter space name"
+                    placeholder="Enter cloud name"
                 />
             </div>
 
