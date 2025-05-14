@@ -1,0 +1,47 @@
+.CreateSpacePage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #4A90E2, #50C9C3);
+}
+
+h2 {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  color: white;
+  margin-bottom: 8px;
+}
+
+.form-group input {
+  padding: 10px;
+  width: 250px;
+  border-radius: 8px;
+  border: none;
+}
+
+.error {
+  color: red;
+  margin-bottom: 10px;
+}
+
+.create-button {
+  background-color: #38B6FF;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  max-width: 250px;
+}

@@ -1,4 +1,4 @@
-.Home {
+.Home1 {
   background: url(assets/before_login_background.png) no-repeat center center;
   background-size: cover;
   background-position: center;
@@ -12,6 +12,26 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+}
+
+.Home2 {
+  background-color: #223B44;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
 }
 
 .submit-container {
@@ -41,4 +61,104 @@
 .submit a {
   text-decoration: none;
   color: inherit;
+}
+.profile-section {
+  margin-top: 20px;
+}
+
+.large-profile {
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  background-color: #d9d9d9;
+  object-fit: cover;
+}
+
+.clouds-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 60px;
+  position: relative;
+}
+
+.cloud {
+  position: relative;
+  width: 320px;
+  height: 200px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cloud-image {
+  width: 100%;
+  height: auto;
+}
+
+.cloud-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -40%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.small-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  margin-bottom: 5px;
+}
+
+.cloud-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: nowrap; /* ⬅️ don't allow wrapping on large screens */
+  z-index: 2; /* ⬅️ Put it in front of clouds */
+}
+
+.home-button {
+  padding: 10px 20px; /* ⬅️ changed from 10px 30px to 10px 20px */
+  background-color: #4A90E2;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* smooth hover */
+  min-width: 200px; /* ⬅️ force consistent button width */
+}
+
+.logout-button {
+  margin-top: 20px;
+}
+
+.logout-button button {
+  background: none;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }

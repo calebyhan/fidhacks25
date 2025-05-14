@@ -6,6 +6,9 @@ import Home from "./components/Home";
 import Login from "./components/Login"
 import PostInterface from "./components/PostInterface";
 import Space from "./components/Space";
+import CreateSpace from "./components/CreateSpace";
+import JoinSpace from './components/JoinSpace';
+import ViewSpaces from './components/ViewSpaces';
 import Profile from "./components/Profile"
 import Resources from "./components/Resources"
 
@@ -20,6 +23,9 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/post" element={<PostInterface />} />
             <Route path="/space/:spaceId" element={<Space />} />
+            <Route path="/create-space" element={<CreateSpace />} />
+            <Route path="/join-space" element={<JoinSpace />} />
+            <Route path="/view-spaces" element={<ViewSpaces />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/resources" element={<Resources />} />
 
