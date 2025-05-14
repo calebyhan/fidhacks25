@@ -11,7 +11,8 @@ Our inspiration came from the Women in Tech panel on the first day of Fidhacks 2
 
 We asked ourselves: _What would it look like if encouragement was built into our everyday digital experiences?_
 
-That’s when we decided to create **Kudos** 
+That’s when we decided to create **Kudos**.
+
 Kudos is a space that flips the switch on social media by embracing positivity, not comparison.
 
 ## What it does
