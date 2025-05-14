@@ -28,21 +28,32 @@ function createUser(userId, username, name, email, password) {
     });
 }
 
-function createPost(userId, postId, postContent) {
-    const db = getDatabase(app);
-    set(ref(db, "posts/" + postId), {
-        author: userId,
-        content: postContent,
-        kudos: 0,
-        timestamp: getCurrentTimestamp(),
-    });
-    set(ref(db, "users/" + userId + "/posts/" + postId), postId);
+function createPost(userId, postId, postContent, spaces) {
+  const db = getDatabase(app);
+
+  set(ref(db, "posts/" + postId), {
+    author: userId,
+    content: postContent,
+    kudos: 0,
+    spaces: spaces,
+    timestamp: getCurrentTimestamp(),
+  });
+
+  spaces.forEach((spaceId) => {
+    const spacePostsRef = ref(db, "spaces/" + spaceId + "/posts/" + postId);
+    set(spacePostsRef, postId); 
+  });
+
+  set(ref(db, "users/" + userId + "/posts/" + postId), postId);
 }
 
 function createSpace(userId, spaceId, spaceName) {
     const db = getDatabase(app);
-    set(ref(db, "spaces/" + spaceId), spaceName);
-  
+    set(ref(db, "spaces/" + spaceId), {
+        name: spaceName,
+        posts: {}
+    });
+
     set(ref(db, "users/" + userId + "/spaces/" + spaceId), spaceId);
 }
 
@@ -76,4 +87,38 @@ async function login(email, password) {
     }
 }
 
-export { db, createUser, createPost, createSpace, login };
+async function spaces(userId) {
+    const db = getDatabase();
+    const dbRef = ref(db);
+
+    try {
+        const userSnapshot = await get(child(dbRef, `users/${userId}/spaces`));
+        if (!userSnapshot.exists()) {
+        console.log("User has no spaces");
+        return [];
+        }
+
+        const spaceIdsObj = userSnapshot.val();
+        const spaceIds = Object.values(spaceIdsObj);
+
+        const spaceList = [];
+
+        for (const spaceId of spaceIds) {
+        const spaceSnapshot = await get(child(dbRef, `spaces/${spaceId}`));
+        if (spaceSnapshot.exists()) {
+            const spaceData = spaceSnapshot.val();
+            spaceList.push({
+            id: spaceId,
+            name: spaceData.name
+            });
+        }
+        }
+
+        return spaceList;
+    } catch (error) {
+        console.error("Error fetching spaces:", error);
+        return [];
+    }
+}
+
+export { db, createUser, createPost, createSpace, login, spaces };

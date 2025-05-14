@@ -15,7 +15,7 @@ export default function Signup() {
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmRef = useRef();
-    const [cookies, setCookie] = useCookies(['user']);
+    const [setCookie] = useCookies(['user']);
     const navigate = useNavigate();
     
     const [error, setError] = useState("");
