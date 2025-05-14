@@ -17,7 +17,7 @@
 }
 
 .Home2 {
-  background-color: #223B44;
+  background: linear-gradient(180deg, #48575D 0%, #477D91 38.46%);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -84,8 +84,8 @@
 
 .cloud {
   position: relative;
-  width: 320px;
-  height: 200px;
+  width: 560px;
+  height: 350px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -101,7 +101,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-40%, -40%);
+  transform: translate(-10%, -40%);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -118,7 +118,7 @@
 }
 
 .cloud-name {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
   color: black;
 }

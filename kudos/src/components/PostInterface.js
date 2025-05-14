@@ -70,7 +70,7 @@ export default function PostInterface() {
         <div className="postcontainer">
                 {showPopup && <div className="popup">{popupMessage}</div>}
                 <div className="header">
-                    <h2 className="text">Create a Post</h2>
+                    <h2 className="textpost">Create a Post</h2>
                     <div className="underline"></div>
                 </div>
             <div className="items">
