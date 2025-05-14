@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { createPost, getSpaceOrder } from "../database";
 import { getDatabase, ref, get, child } from "firebase/database";
+import JSConfetti from 'js-confetti'
+
+
 import "./popup.css";
 import "./PostInterface.css";
 
+const jsConfetti = new JSConfetti()
 export default function PostInterface() {
     const [cookies] = useCookies(['user']);
     const user = cookies.user;
@@ -53,7 +57,7 @@ export default function PostInterface() {
         if (user && postContent && selectedSpaces.length > 0) {
             const postId = Math.floor(Math.random() * 10000);
             await createPost(user.id, postId, postContent, selectedSpaces);
-
+            jsConfetti.addConfetti()
             setPopupMessage("Post created successfully!");
             setShowPopup(true);
             setTimeout(() => setShowPopup(false), 2000);
