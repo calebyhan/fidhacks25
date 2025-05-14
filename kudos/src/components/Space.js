@@ -19,7 +19,7 @@ export default function Space() {
     useEffect(() => {
         async function checkAccessAndFetch() {
             if (!user) {
-                navigate('/login');
+                navigate('/');
                 return;
             }
 

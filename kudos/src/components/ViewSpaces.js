@@ -29,7 +29,7 @@ export default function ViewSpaces() {
 
                 setUserSpaces(spacesFetched);
             } else {
-                navigate("/login");
+                navigate("/");
             }
         }
         fetchSpaces();
