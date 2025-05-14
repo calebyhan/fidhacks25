@@ -31,10 +31,6 @@ export default function Home() {
                             </div>
                         </div>
                     </div>
-                    <div className="cloud">
-                        <img src={require('./assets/cloud1.png')} alt="cloud1" />
-                        <img src={require('./assets/cloud2.png')} alt="cloud2" />
-                    </div>
                 </>
             ) : (
                 <>

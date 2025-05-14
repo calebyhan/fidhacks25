@@ -1,8 +1,10 @@
 .Home {
-  text-align: center;
-  background-color: #223B44;
-  height: 100vh;
+  background: url(assets/before_login_background.png) no-repeat center center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -10,13 +12,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.cloud {
-  width: 500px;
-  height: 500px;
-  flex-shrink: 0;
-  aspect-ratio: 1/1;
 }
 
 .submit-container {
