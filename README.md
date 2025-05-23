@@ -5,7 +5,8 @@ Caleb Han, Dipendra Kandel, Juliana Prada, Janeyli Rosario
 ### Demo account:
 * email: a@gmail.com
 * password: a
-
+  
+Link: fidhacks25.vercel.app
 ## Inspiration
 Our inspiration came from the Women in Tech panel on the first day of Fidhacks 2025. The Women in Tech Panel truly inspired us to reflect on a critical issue: the lack of confidence and support women often face when navigating their careers and ambitions. The panel opened our eyes to how deeply rooted self-doubt can be, especially in environments that seem intimidating. 
 
